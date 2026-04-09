@@ -4,10 +4,12 @@
 ## 0.10.14
 
 - Document shared Gateway API examples (`examples/gateway-api/aws`, `examples/gateway-api/kgateway`) in the README.
+- Add optional Gateway API support (`HTTPRoute` via `gatewayApi` values), independent of `ingress`.
 
 ## 0.10.13
 
-- Add optional Gateway API support (`HTTPRoute` via `gatewayApi` values), independent of `ingress`.
+- Bump Workbench version to 2026.01.2
+
 
 ## 0.10.12
 

@@ -3,10 +3,11 @@
 ## 0.5.55
 
 - Document shared Gateway API examples (`examples/gateway-api/aws`, `examples/gateway-api/kgateway`) in the README.
+- Add optional Gateway API support (`HTTPRoute` via `gatewayApi` values), independent of `ingress`.
 
 ## 0.5.54
 
-- Add optional Gateway API support (`HTTPRoute` via `gatewayApi` values), independent of `ingress`.
+- Update default Posit Package Manager version to 2026.04.0
 
 ## 0.5.53
 

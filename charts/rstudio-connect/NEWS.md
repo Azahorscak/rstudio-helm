@@ -1,12 +1,21 @@
 # Changelog
-
-## 0.8.37
+## 0.8.39
 
 - Document shared Gateway API examples (`examples/gateway-api/aws`, `examples/gateway-api/kgateway`) in the README.
 
+## 0.8.38
+
+- Bump Connect version to 2026.03.1
+
+## 0.8.37
+
+- Fix OTel collector advertise host in OHE mode: inject `status.podIP` via Downward API as `CONNECT_OPENTELEMETRY_COLLECTORADVERTISEHOST` when `config.OpenTelemetry.Enabled` is `true`, replacing the Service DNS default that caused content job pods to time out on the unexposed ephemeral collector port
+
 ## 0.8.36
 
-- Add optional Gateway API support (`HTTPRoute` via `gatewayApi` values), independent of `ingress`.
+- Remove deprecated default value `Metrics.Enabled = true`
+- Remove legacy Graphite exporter sidecar (`prometheus.legacy`, `prometheusExporter.*`, and `configmap-graphite-exporter.yaml`). The built-in Prometheus `/metrics` endpoint is now the only supported metrics path. Use OpenTelemetry for richer instrumentation.
+
 
 ## 0.8.35
 
