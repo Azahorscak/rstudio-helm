@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.55
+
+- Document shared Gateway API examples (`examples/gateway-api/aws`, `examples/gateway-api/kgateway`) in the README.
+
+## 0.5.54
+
+- Add optional Gateway API support (`HTTPRoute` via `gatewayApi` values), independent of `ingress`.
+
 ## 0.5.53
 
 - Update chart icon to Posit icon

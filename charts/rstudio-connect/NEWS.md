@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.37
+
+- Document shared Gateway API examples (`examples/gateway-api/aws`, `examples/gateway-api/kgateway`) in the README.
+
+## 0.8.36
+
+- Add optional Gateway API support (`HTTPRoute` via `gatewayApi` values), independent of `ingress`.
+
 ## 0.8.35
 
 - Add `executionEnvironments` value for [declarative management of execution environments](https://docs.posit.co/connect/admin/appendix/off-host/execution-environments/#declarative-management). Unlike `launcher.customRuntimeYaml`, changes take effect on every `helm upgrade` without requiring a pod restart or database reset. Requires Connect version 2026.03.0 or later.

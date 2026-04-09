@@ -1,6 +1,14 @@
 # Changelog
 
 
+## 0.10.14
+
+- Document shared Gateway API examples (`examples/gateway-api/aws`, `examples/gateway-api/kgateway`) in the README.
+
+## 0.10.13
+
+- Add optional Gateway API support (`HTTPRoute` via `gatewayApi` values), independent of `ingress`.
+
 ## 0.10.12
 
 - Fix invalid JSON in default `positron-user-settings.json`
