@@ -48,11 +48,11 @@ charts/<chart-name>/
 ### Documentation Generation
 - READMEs are auto-generated using helm-docs from `README.md.gotmpl` templates
 - Never edit `README.md` directly - edit the `.gotmpl` template
-- CI auto-generates and commits docs back to PRs
+- Run `just docs` locally before committing — CI will reject uncommitted changes
 
 ## Critical Workflow Requirements
 
-1. **Version bumping is mandatory**: Any change (including README templates) requires bumping the chart version in `Chart.yaml`
+1. **Version bumping is mandatory for non-doc changes**: Any change to chart templates, values, or Chart.yaml requires bumping the chart version. Documentation-only changes (`README.md`, `README.md.gotmpl`, `_templates.gotmpl`, `NEWS.md`) do **not** require a version bump — these files are listed in `.helmignore` so `ct lint` will not flag them.
 2. **NEWS update required**: All chart changes require an update to the chart's NEWS.md file
 3. **Run `make lint`**: Run `make lint` in the chart directory for all chart changes
 4. **CI runs only on local branches**: PRs from forks won't trigger full CI - contributors need branch access

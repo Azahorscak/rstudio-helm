@@ -188,6 +188,10 @@ containers:
       mountPath: "/var/lib/rstudio-launcher/Kubernetes/service.tpl"
       subPath: "service.tpl"
     {{- end }}
+    {{- if (include "rstudio-workbench.positronInitEnabled" .) }}
+    - name: positron-components
+      mountPath: {{ include "rstudio-workbench.positronMountPath" . | quote }}
+    {{- end }}
     {{- if .Values.pod.volumeMounts }}
     {{- toYaml .Values.pod.volumeMounts | nindent 4 }}
     {{- end }}
@@ -416,10 +420,37 @@ volumes:
     name: {{ include "rstudio-workbench.fullname" .}}-templates
     defaultMode: {{ .Values.config.defaultMode.server }}
 {{- end }}
+{{- if (include "rstudio-workbench.positronInitEnabled" .) }}
+- name: positron-components
+  emptyDir: {}
+{{- end }}
 {{- if .Values.pod.volumes }}
 {{ toYaml .Values.pod.volumes }}
 {{- end }}
 {{- end }}
+
+{{/*
+Gate for attaching the Positron init container to the Workbench pod.
+Renders "true" when enabled, "" otherwise, so callers can use it in
+`if (include ...)` and compose it with `or` in larger conditions.
+*/}}
+{{- define "rstudio-workbench.positronInitEnabled" -}}
+{{- if and .Values.components.enabled .Values.components.positron.version -}}
+true
+{{- end -}}
+{{- end -}}
+
+{{/*
+Versioned mount path for Positron on the Workbench pod. The positron-init
+container flattens artifacts into /mnt/init; this emptyDir is mounted at
+the version path so positron.conf `exe` resolves correctly.
+Returns empty when the gate is off, so callers compose safely.
+*/}}
+{{- define "rstudio-workbench.positronMountPath" -}}
+{{- if (include "rstudio-workbench.positronInitEnabled" .) -}}
+{{- printf "/usr/lib/rstudio-server/bin/positron-server/%s" .Values.components.positron.version -}}
+{{- end -}}
+{{- end -}}
 
 {{/*
 Create chart name and version as used by the chart label.

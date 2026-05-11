@@ -1,0 +1,14 @@
+# Minimal upgrade from Launcher to direct Kubernetes runner.
+#
+# If your values.yaml contains modifications to launcher.templateValues or
+# any other launcher.* fields use the examples below to move these values
+# to the new configuration structure.
+
+# Disable the Launcher
+launcher:
+  enabled: false
+
+# Enable the direct Kubernetes runner
+backends:
+  kubernetes:
+    enabled: true

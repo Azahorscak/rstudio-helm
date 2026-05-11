@@ -3,6 +3,29 @@
 
 - Document shared Gateway API examples (`examples/gateway-api/aws`, `examples/gateway-api/kgateway`) in the README.
 
+## 0.9.4
+
+- Add `revisionHistoryLimit` value (default `3`) for the Connect deployment, exposing a knob to tune retained ReplicaSets and prevent old pods from accumulating across rolling updates.
+
+## 0.9.3
+
+- Bump Connect version to 2026.04.0
+
+## 0.9.2
+
+- Add `events: list` permission to the direct Kubernetes runner Role. Connect 2026.04.0 lists events in the target namespace when a content pod fails to start and the failure reason cannot be determined from pod conditions.
+
+## 0.9.1
+
+- Remove the default values for `launcher.customRuntimeYaml`. This configuration has been replaced by the `executionEnvironments` configuration which provides a mechanism for [managing execution environments declaratively](https://docs.posit.co/connect/admin/appendix/off-host/execution-environments/#declarative-management) and is better suited for IaC.
+
+## 0.9.0
+
+- Add support for an alternative Kubernetes backend via `backends.kubernetes.enabled`, which replaces the Launcher's template system with standard Kubernetes Job and Service manifests configured through `defaultResourceJobBase` and `defaultResourceServiceBase`. This backend will be available starting with Connect 2026.04.0.
+- Add mutual-exclusion validation: `launcher.enabled` and `backends.kubernetes.enabled` cannot both be true.
+- Add dedicated RBAC for the direct Kubernetes runner with least-privilege permissions, including automatic ClusterRole creation for NodePort service types.
+- Add upgrade guide and examples in `examples/connect/upgrade-launcher-to-kubernetes/`.
+
 ## 0.8.38
 
 - Bump Connect version to 2026.03.1
