@@ -1,7 +1,8 @@
 # Changelog
-## 0.8.39
+## 0.9.5
 
 - Document shared Gateway API examples (`examples/gateway-api/aws`, `examples/gateway-api/kgateway`) in the README.
+- Add optional Gateway API support (`HTTPRoute` via `gatewayApi` values), independent of `ingress`.
 
 ## 0.9.4
 
